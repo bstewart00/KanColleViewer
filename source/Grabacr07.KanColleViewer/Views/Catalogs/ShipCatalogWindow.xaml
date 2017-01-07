@@ -293,6 +293,16 @@
 													 IsChecked="{Binding Level2OrMore, Mode=TwoWay}" />
 										<RadioButton Content="{Binding Resources.ShipCatalog_Filter_Misc_Level1, Source={x:Static models:ResourceService.Current}, Mode=OneWay}"
 													 IsChecked="{Binding Level1, Mode=TwoWay}" />
+                                        <TextBlock Margin="0,2" HorizontalAlignment="Right">
+										    <Run Text="{Binding Resources.ShipCatalog_Filter_Min, Source={x:Static models:ResourceService.Current}, Mode=OneWay}" />
+										    <Run Text=":" />
+                                        </TextBlock>
+                                        <TextBox MinWidth="20" Text="{Binding MinLevel}" />
+                                        <TextBlock Margin="0,2" HorizontalAlignment="Right">
+										    <Run Text="{Binding Resources.ShipCatalog_Filter_Max, Source={x:Static models:ResourceService.Current}, Mode=OneWay}" />
+										    <Run Text=":" />
+                                        </TextBlock>
+                                        <TextBox MinWidth="20" Text="{Binding MaxLevel}" />
 									</WrapPanel>
 								</Grid>
 
@@ -447,6 +457,16 @@
 													 IsChecked="{Binding Brilliant, Mode=TwoWay}" />
 										<RadioButton Content="{Binding Resources.ShipCatalog_Filter_Misc_ConditionBelow50, Source={x:Static models:ResourceService.Current}, Mode=OneWay}"
 													 IsChecked="{Binding Unbrilliant, Mode=TwoWay}" />
+                                        <TextBlock Margin="0,2" HorizontalAlignment="Right">
+										    <Run Text="{Binding Resources.ShipCatalog_Filter_Min, Source={x:Static models:ResourceService.Current}, Mode=OneWay}" />
+										    <Run Text=":" />
+                                        </TextBlock>
+                                        <TextBox MinWidth="20" Text="{Binding MinCondition}" />
+                                        <TextBlock Margin="0,2" HorizontalAlignment="Right">
+										    <Run Text="{Binding Resources.ShipCatalog_Filter_Max, Source={x:Static models:ResourceService.Current}, Mode=OneWay}" />
+										    <Run Text=":" />
+                                        </TextBlock>
+                                        <TextBox MinWidth="20" Text="{Binding MaxCondition}" />
 									</WrapPanel>
 								</Grid>
 							</StackPanel>

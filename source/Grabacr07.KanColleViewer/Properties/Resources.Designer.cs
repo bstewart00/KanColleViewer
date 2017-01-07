@@ -3032,6 +3032,24 @@ namespace Grabacr07.KanColleViewer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Max.
+        /// </summary>
+        public static string ShipCatalog_Filter_Max {
+            get {
+                return ResourceManager.GetString("ShipCatalog_Filter_Max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Min.
+        /// </summary>
+        public static string ShipCatalog_Filter_Min {
+            get {
+                return ResourceManager.GetString("ShipCatalog_Filter_Min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to すべて.
         /// </summary>
         public static string ShipCatalog_Filter_Misc_All {

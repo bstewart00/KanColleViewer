@@ -333,5 +333,7 @@ namespace Grabacr07.KanColleWrapper.Models
 			=> targetLevel.HasValue && shipTable.ContainsKey(targetLevel.Value)
 				? shipTable[targetLevel.Value].Total - currentExperience
 				: 0;
+
+        public static int MaxLevel => shipTable.Keys.Max();
 	}
 }

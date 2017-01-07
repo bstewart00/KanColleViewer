@@ -10,31 +10,33 @@ namespace Grabacr07.KanColleWrapper.Models
 	/// </summary>
 	public enum ConditionType
 	{
+        Max = 100,
 		/// <summary>
 		/// キラキラ状態 (コンディション値 50 ～ 100)。
 		/// </summary>
-		Brilliant,
+		Brilliant = 50,
 		// 神宝「ブリリアントドラゴンバレッタ」 
 
 		/// <summary>
 		/// 通常状態 (コンディション値 40 ～ 49)。
 		/// </summary>
-		Normal,
+		Normal = 40,
 
 		/// <summary>
 		/// 疲労状態 (間宮点灯, コンディション値 30 ～ 39)。
 		/// </summary>
-		Tired,
+		Tired = 30,
 
 		/// <summary>
 		/// 疲労状態 (橙アイコン, コンディション値 20 ～ 29)。
 		/// </summary>
-		OrangeTired,
+		OrangeTired = 20,
 
 		/// <summary>
 		/// 疲労状態 (赤アイコン, コンディション値 0 ～ 20)。
 		/// </summary>
-		RedTired,
+		RedTired = 0,
+        Min = 0,
 	}
 
 	public static class ConditionTypeHelper

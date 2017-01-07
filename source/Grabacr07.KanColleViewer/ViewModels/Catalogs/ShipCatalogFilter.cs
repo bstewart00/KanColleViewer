@@ -38,11 +38,18 @@ namespace Grabacr07.KanColleViewer.ViewModels.Catalogs
 			get { return this._Both; }
 			set
 			{
-				if (this._Both != value)
+                if (value)
+                {
+                    MinLevel = 1;
+                    MaxLevel = Experience.MaxLevel;
+                }
+
+                if (this._Both != value)
 				{
 					this._Both = value;
-					this.RaisePropertyChanged();
-					this.Update();
+
+                    this.RaisePropertyChanged();
+                    this.Update();
 				}
 			}
 		}
@@ -58,11 +65,18 @@ namespace Grabacr07.KanColleViewer.ViewModels.Catalogs
 			get { return this._Level1; }
 			set
 			{
-				if (this._Level1 != value)
+                if (value)
+                {
+                    MinLevel = 1;
+                    MaxLevel = 1;
+                }
+
+                if (this._Level1 != value)
 				{
 					this._Level1 = value;
-					this.RaisePropertyChanged();
-					this.Update();
+
+                    this.RaisePropertyChanged();
+                    this.Update();
 				}
 			}
 		}
@@ -78,11 +92,18 @@ namespace Grabacr07.KanColleViewer.ViewModels.Catalogs
 			get { return this._Level2OrMore; }
 			set
 			{
+                if (value)
+                {
+                    MinLevel = 2;
+                    MaxLevel = Experience.MaxLevel;
+                }
+
 				if (this._Level2OrMore != value)
 				{
 					this._Level2OrMore = value;
-					this.RaisePropertyChanged();
-					this.Update();
+
+                    this.RaisePropertyChanged();
+                    this.Update();
 				}
 			}
 		}
@@ -95,13 +116,39 @@ namespace Grabacr07.KanColleViewer.ViewModels.Catalogs
 			this._Level2OrMore = true;
 		}
 
-		public override bool Predicate(Ship ship)
-		{
-			if (this.Both) return true;
-			if (this.Level2OrMore && ship.Level >= 2) return true;
-			if (this.Level1 && ship.Level == 1) return true;
+        private int _minLevel = 1;
+        public int MinLevel
+        {
+            get { return this._minLevel; }
+            set
+            {
+                if (this._minLevel != value)
+                {
+                    this._minLevel = value;
+                    this.RaisePropertyChanged();
+                    this.Update();
+                }
+            }
+        }
 
-			return false;
+        private int _maxLevel = Experience.MaxLevel;
+        public int MaxLevel
+        {
+            get { return this._maxLevel; }
+            set
+            {
+                if (this._maxLevel != value)
+                {
+                    this._maxLevel = value;
+                    this.RaisePropertyChanged();
+                    this.Update();
+                }
+            }
+        }
+
+        public override bool Predicate(Ship ship)
+		{
+            return ship.Level >= MinLevel && ship.Level <= MaxLevel;
 		}
 	}
 
@@ -694,7 +741,13 @@ namespace Grabacr07.KanColleViewer.ViewModels.Catalogs
 			get { return this._Both; }
 			set
 			{
-				if (this._Both != value)
+                if (value)
+                {
+                    MinCondition = (int)ConditionType.Min;
+                    MaxCondition = (int)ConditionType.Max;
+                }
+
+                if (this._Both != value)
 				{
 					this._Both = value;
 					this.RaisePropertyChanged();
@@ -714,7 +767,13 @@ namespace Grabacr07.KanColleViewer.ViewModels.Catalogs
 			get { return this._Brilliant; }
 			set
 			{
-				if (this._Brilliant != value)
+                if (value)
+                {
+                    MinCondition = (int)ConditionType.Brilliant;
+                    MaxCondition = (int)ConditionType.Max;
+                }
+
+                if (this._Brilliant != value)
 				{
 					this._Brilliant = value;
 					this.RaisePropertyChanged();
@@ -734,7 +793,13 @@ namespace Grabacr07.KanColleViewer.ViewModels.Catalogs
 			get { return this._Unbrilliant; }
 			set
 			{
-				if (this._Unbrilliant != value)
+                if (value)
+                {
+                    MinCondition = (int)ConditionType.Min;
+                    MaxCondition = (int)ConditionType.Brilliant - 1;
+                }
+
+                if (this._Unbrilliant != value)
 				{
 					this._Unbrilliant = value;
 					this.RaisePropertyChanged();
@@ -743,9 +808,39 @@ namespace Grabacr07.KanColleViewer.ViewModels.Catalogs
 			}
 		}
 
-		#endregion
+        private int _minCondition = (int)ConditionType.Min;
+        public int MinCondition
+        {
+            get { return this._minCondition; }
+            set
+            {
+                if (this._minCondition != value)
+                {
+                    this._minCondition = value;
+                    this.RaisePropertyChanged();
+                    this.Update();
+                }
+            }
+        }
 
-		public ShipConditionFilter(Action updateAction)
+        private int _maxCondition = (int)ConditionType.Max;
+        public int MaxCondition
+        {
+            get { return this._maxCondition; }
+            set
+            {
+                if (this._maxCondition != value)
+                {
+                    this._maxCondition = value;
+                    this.RaisePropertyChanged();
+                    this.Update();
+                }
+            }
+        }
+
+        #endregion
+
+        public ShipConditionFilter(Action updateAction)
 			: base(updateAction)
 		{
 			this._Both = true;
@@ -753,11 +848,7 @@ namespace Grabacr07.KanColleViewer.ViewModels.Catalogs
 
 		public override bool Predicate(Ship ship)
 		{
-			if (this.Both) return true;
-			if (this.Brilliant && ship.ConditionType == ConditionType.Brilliant) return true;
-			if (this.Unbrilliant && ship.ConditionType >= ConditionType.Normal) return true;
-
-			return false;
+            return ship.Condition >= MinCondition && ship.Condition <= MaxCondition;
 		}
 	}
 }

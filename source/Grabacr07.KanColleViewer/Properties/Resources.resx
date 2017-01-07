@@ -1463,6 +1463,12 @@ HTTP プロトコルの通信は自動構成も含め「インターネット �
   <data name="ShipCatalog_Filter_Misc_ConditionBelow50" xml:space="preserve">
     <value>50 未満</value>
   </data>
+  <data name="ShipCatalog_Filter_Max" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="ShipCatalog_Filter_Min" xml:space="preserve">
+    <value>Min</value>
+  </data>
   <data name="Settings_Operation_LoS_UseFleets" xml:space="preserve">
     <value>連合艦隊時、以下の艦隊を索敵値計算の対象として使用する</value>
   </data>
