@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Grabacr07.KanColleViewer.Properties;
 using Grabacr07.KanColleViewer.ViewModels.Catalogs;
 using Grabacr07.KanColleViewer.Views.Catalogs;
+using Grabacr07.KanColleWrapper;
 
 namespace Grabacr07.KanColleViewer.ViewModels.Contents
 {
@@ -62,5 +63,21 @@ namespace Grabacr07.KanColleViewer.ViewModels.Contents
 			var catalog = new SlotItemCatalogViewModel();
 			WindowService.Current.MainWindow.Transition(catalog, typeof(SlotItemCatalogWindow));
 		}
-	}
+
+        public void ShowFleetPlanner()
+        {
+            var viewModel = new FleetPlannerWindowViewModel();
+            WindowService.Current.MainWindow.Transition(viewModel, typeof(FleetPlannerWindow));
+        }
+
+        public void DumpData()
+        {
+            DataExporter exporter = new DataExporter();
+            exporter.Export(new OrganizationModel
+            {
+                Ships = KanColleClient.Current.Homeport.Organization.Ships,
+                Items = KanColleClient.Current.Homeport.Itemyard.SlotItems
+            });
+        }
+    }
 }

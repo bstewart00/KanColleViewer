@@ -35,4 +35,8 @@ namespace Grabacr07.KanColleViewer.Models.Settings
 	{
 		public SerializableProperty<bool> ShowEquipmentStats => this.Cache(key => new SerializableProperty<bool>(key, Providers.Roaming, false));
 	}
+
+    public class FleetPlannerWindowSettings : WindowSettings
+    {
+    }
 }

@@ -1060,6 +1060,15 @@ namespace Grabacr07.KanColleViewer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fleet Planner.
+        /// </summary>
+        public static string Overview_FleetPlanner {
+            get {
+                return ResourceManager.GetString("Overview_FleetPlanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 艦娘一覧.
         /// </summary>
         public static string Overview_ShipList {

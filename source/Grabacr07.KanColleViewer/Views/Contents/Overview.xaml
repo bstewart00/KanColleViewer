@@ -318,7 +318,15 @@
 						<metro2:CallMethodButton Content="{Binding Resources.Overview_EquipmentList, Source={x:Static models:ResourceService.Current}, Mode=OneWay}"
 												 Padding="12,8"
 												 MethodName="ShowSlotItemCatalog" />
-					</StackPanel>
+
+                        <metro2:CallMethodButton Content="{Binding Resources.Overview_FleetPlanner, Source={x:Static models:ResourceService.Current}, Mode=OneWay}"
+												 Padding="12,8"
+												 MethodName="ShowFleetPlanner" />
+
+                        <metro2:CallMethodButton Content="Dump"
+												 Padding="12,8"
+												 MethodName="DumpData" />
+                    </StackPanel>
 				</Border>
 
 				<metro2:CallMethodButton Grid.Row="0"
